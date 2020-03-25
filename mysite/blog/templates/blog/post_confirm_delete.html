@@ -1,0 +1,10 @@
+{% extends "blog/base.html" %}
+{% block content %}
+  <form class="post-form" method="post">
+    {% csrf_token %}
+    <!-- When using CreateView you have access to self.object, which is the object being created. If the object hasn’t been created yet, the value will be None. -->
+    <p>Are you sure you want to delete {{ object }} ?</p>
+    <button type="submit" class="btn btn-danger" value="Confirm"/>
+  </form>
+
+{% endblock %}

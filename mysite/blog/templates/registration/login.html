@@ -1,22 +1,23 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-<div class="jumbotron">
+  <div class="jumbotron">
 
-  <h2>Please Login: </h2>
-  <h3>(Must be SupperUser, please check admin for issues.)</h3>
-  {% if form.errors %}
-    <p>Your username and password didn't match.Please try again! </p>
-  {% endif %}
+    <h2>Please Login: </h2>
+    <h3>(Must be SupperUser, please check admin for issues.)</h3>
+    {% if form.errors %}
+      <p>Your username and password didn't match.Please try again! </p>
+    {% endif %}
 
-  <form  action="{% url 'login' %}" method="post">
-    <!-- this "login" is located urls.py "name = 'login'" -->
-  {% csrf_token %}
-    {{form.as_p}}
+    <form  action="{% url 'login' %}" method="post">
+      <!-- this "login" is located urls.py "name = 'login'" -->
+    {% csrf_token %}
+      {{form.as_p}}
 
-    <input type="submit" class="btn btn-primary" value="Login">
-    <input type="hidden" name="next" value="{{ next }}"> <!-- basically just automatically leads to the "next" page, which was the placeholder for where the user was trying to go --->
+      <input type="submit" class="btn btn-primary" value="Login">
+      <input type="hidden" name="next" value="{{ next }}"> <!-- basically just automatically leads to the "next" page, which was the placeholder for where the user was trying to go --->
 
-  </form>
+    </form>
 
-</div>
+  </div>
+{% endblock %}

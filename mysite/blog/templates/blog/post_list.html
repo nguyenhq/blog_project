@@ -1,0 +1,19 @@
+{% extends "blog/base.html" %}
+{% load i18n %}
+{% block content %}
+<div class="centerstage">
+  <h1>{% trans "This is the title." %}</h1>
+  {{output}}
+  <!-- post_list is calling in url.py->(CBV) path('',views.PostListView.as_view(),name ='post_list') -->
+  {% for post in post_list %}
+    <div class="post">
+      <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+      <div class="date">
+        <p>Published on : {{post.published|date:"D M Y"}}</p>
+      </div>
+      <!-- ? not understand method count-->
+      <a href="{% url 'post_detail' pk=post.pk %}"></a>Comments: {{ post.approve_comments.count }}
+    </div>
+  {% endfor %}
+</div>
+{% endblock %}
